@@ -11,7 +11,7 @@ The purpose of this project is to display skills I have learned while earning my
 analysis to understand correlations between student behavior and their exam scores.
 
 ## Hypothesis Statement:
-What Is the top contributer to high and low exam scores? Are they the same?
+What Is the top contributor to high and low exam scores? Are they the same?
 
 ## Dataset information
 ### Description
@@ -42,6 +42,34 @@ This dataset provides a comprehensive overview of various factors affecting stud
 | Gender                      | Gender of the student (Male, Female).                                       |
 | Exam_Score                  | Final exam score.                                                          |
 > Source: https://www.kaggle.com/datasets/lainguyn123/student-performance-factors
+
+
+## Analysis Steps
+### Exploration
+
+### Cleaning
+
+### Identifying top features
+
+
+Model Fitting:
+```
+# Define parameter grid for Gradient Boosting
+param_grid = {
+    'n_estimators': [100, 200, 300, 500],
+    'learning_rate': [0.01, 0.05, 0.1, 0.2],
+    'max_depth': [3, 4, 5, 6]
+}
+
+gbr = GradientBoostingRegressor(random_state=42)
+
+grid_search = GridSearchCV(estimator=gbr, param_grid=param_grid, cv=3, scoring='r2', n_jobs=-1)
+grid_search.fit(X_train, y_train)
+
+# Best parameters from the grid search
+best_params = grid_search.best_params_
+print(f"Best Parameters: {best_params}")
+```
 
 
 ## Contributions
